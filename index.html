@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SILENCE - Purchase & Login Buttons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: #888888;
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            position: relative;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 140px;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-purchase {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .btn-purchase:hover {
+            background: linear-gradient(135deg, #ff5555, #dd1111);
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-login {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-login:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Alternative compact versions */
+        .compact-buttons {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .compact-buttons h3 {
+            color: #888888;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .btn-compact {
+            position: relative;
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 120px;
+            margin: 0 8px;
+        }
+
+        .btn-compact-purchase {
+            background: #ff4444;
+            color: white;
+        }
+
+        .btn-compact-purchase:hover {
+            background: #ff5555;
+            transform: scale(1.05);
+        }
+
+        .btn-compact-login {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-compact-login:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Code display */
+        .code-section {
+            margin-top: 3rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-section h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Demo of your existing branding -->
+        <div class="logo">SILENCE</div>
+        <div class="tagline">UNDETECTED · EASY TO USE · CHEAP!</div>
+
+        <!-- Main button designs -->
+        <div class="buttons-container">
+            <a href="#" class="btn btn-purchase" onclick="handlePurchase()">Purchase</a>
+            <a href="#" class="btn btn-login" onclick="handleLogin()">Login</a>
+        </div>
+
+        <!-- Compact versions -->
+        <div class="compact-buttons">
+            <h3>Compact Version</h3>
+            <a href="#" class="btn-compact btn-compact-purchase" onclick="handlePurchase()">Purchase</a>
+            <a href="#" class="btn-compact btn-compact-login" onclick="handleLogin()">Login</a>
+        </div>
+
+        <!-- Code examples -->
+        <div class="code-section">
+            <h3>FEATURES</h3>
+            <pre>&lt;! -- LOADER -- !&gt;
+&lt;Undetected & Safe loader&lt;/a&gt;
+
+&lt;!-- AUTO UPDATING -- !&gt;
+&lt;The loader auto updates for the latest version of the game your trying to play.&lt;/a&gt;</pre>
+
+            <h3>CSS for Main Buttons</h3>
+            <pre>.btn {
+    position: relative;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 140px;
+    overflow: hidden;
+}
+
+.btn-purchase {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+}
+
+.btn-purchase:hover {
+    background: linear-gradient(135deg, #ff5555, #dd1111);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-login {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}</pre>
+        </div>
+    </div>
+
+    <script>
+        function handlePurchase() {
+            // Replace with your purchase logic
+            alert('Redirecting to purchase page...');
+            // window.location.href = '/purchase';
+        }
+
+        function handleLogin() {
+            // Replace with your login logic
+            alert('Redirecting to login page...');
+            // window.location.href = '/login';
+        }
+
+        // Add subtle animations on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn, .btn-compact');
+            buttons.forEach((btn, index) => {
+                btn.style.opacity = '0';
+                btn.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    btn.style.transition = 'all 0.5s ease';
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
